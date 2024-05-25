@@ -28,15 +28,13 @@ void main()
     float judge = texture(gAlbedo, TexCoords).w;
     vec3 Normal = texture(gNormal, TexCoords).rgb;
     vec3 Diffuse = texture(gAlbedo, TexCoords).rgb;
-
     vec3 camera2Pos = FragPos - cameraPosition;
     
     // 未超出边界
     int res = 0;
+    
     // rgb-a掩码
-
     if(judge == 0.0f){
-
         vec3 reflectDir = normalize(reflect(camera2Pos, Normal));
         for(int i=1;i<step;i++){
             float d= dt * i;
@@ -60,11 +58,10 @@ void main()
     else{
         FragColor = vec4(Diffuse.rgb,1.0f);
     }
+    
     if(res==0){
         FragColor = vec4(Diffuse.rgb,1.0f);
     }
-    
-
 }
 
     
