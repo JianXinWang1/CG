@@ -1,6 +1,6 @@
 Tinyrender:
 <div align=center>
-<img src="https://github.com/JianXinWang1/CG/blob/master/Tinyrender/model.jpg" width="500px">
+<img src="https://github.com/JianXinWang1/CG/blob/master/TinyRender/model.jpg" width="500px">
 </div>  
   
   
