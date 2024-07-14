@@ -12,7 +12,7 @@ const TGAColor white = TGAColor(255, 255, 255, 255);
 const TGAColor red = TGAColor(255, 0, 0, 255);
 int main(int argc, char** argv) {
 	
-    Model *model = new Model("obj/african_head.obj");
+    Model *model = new Model("asset/african_head.obj");
     TGAImage image(weith, height, TGAImage::RGB);
 	Eigen::Matrix4f c2w_matrix = camera_matrix(camera_point, eye_point, Vec3f(0, 1, 0));
 	Eigen::Matrix4f p_matrix = perspective_matrix();
