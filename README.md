@@ -1,36 +1,48 @@
-Tinyrender:
+###Tinyrender:
+基于C++实现的软光栅化器，主要实现内容包括MVP变换、重心坐标插值、顶点着色、纹理映射、背面剔除、深度测试、Blinn-Phong光照模型.
 <div align=center>
-<img src="https://github.com/JianXinWang1/CG/blob/master/TinyRender/model.jpg" width="500px">
-</div>  
-  
-  
-OpenGL:PCSS
+<img src="/Tinyrender/model.jpg" width="400" height="400">
+</div>
+***
+
+###PCSS:
+
+OpenGL实现Games202作业1,结合Shadow map与点光源,并进行滤波后处理生成软阴影.
 <div align=center>
-<img src="https://github.com/JianXinWang1/CG/blob/master/OpenGL/PCSS/shadow.gif" width="500px">
-</div>  
-  
-  
-OpenGL:IBL
+<img src="/OpenGL/PCSS/shadow.gif" width="400" height="300">
+</div>
+***
+
+###IBL+PBR:
+
+OpenGL实现Games202作业2,结合辐射度量学、渲染方程、CookTorrance-BRDF、Cubemap等实现了IBL的PBR的光照.
 <div align=center>
-<img src="https://github.com/JianXinWang1/CG/blob/master/OpenGL/IBL/IBL.png" width="500px">
-</div>  
-  
-  
-OpenGL:SSR
+<img src="/OpenGL/IBL/IBL.png" width="400" height="250">
+</div>
+***
+
+###SSR:
+
+OpenGL实现Games202作业3,延迟渲染的屏幕光线追踪算法,并进行模糊处理.
 <div align=center>
-<img src="https://github.com/JianXinWang1/CG/blob/master/OpenGL/SSR/SSR.png" width="500px">
+<img src="/OpenGL/SSR/SSR.png" width="400" height="250">
+</div>
+***
+
+
+###Unity SRP:IBL+PBR
+
+基于Unity SRP的基于延迟渲染的CookTorrance-BRDF和IBL的PBR的光照.
+<div align=center>
+<img src="SRP\PBR+IBL\PBR+IBL.png" width="400" height="200">
 </div>
 
 
-SRP:IBL+PBR
-<div align=center>
-<img src="https://github.com/JianXinWang1/CG/blob/master/SRP/PBR%2BIBL/PBR%2BIBL.png" width="500px">
-</div>
+###Unity SRP:IBL+PBR
 
-
-SRP:Shadow
+基于Unity SRP的定向光的阴影.
 <div align=center>
-<img src="https://github.com/JianXinWang1/CG/blob/master/SRP/Shadow/Shadow.png" width="500px">
+<img src="SRP\Shadow\Shadow.png" width="400" height="200">
 </div>
 
 
