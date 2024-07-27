@@ -4,6 +4,7 @@
 <div align=center>
 <img src="/TinyRender/model.jpg" width="400" height="400">
 </div>
+
 ****
 
 ### PCSS:
@@ -12,6 +13,7 @@ OpenGL实现Games202作业1,结合Shadow map与点光源,并进行滤波后处�
 <div align=center>
 <img src="/OpenGL/PCSS/shadow.gif" width="400" height="300">
 </div>
+
 ****
 
 ### IBL+PBR:
@@ -20,6 +22,7 @@ OpenGL实现Games202作业2,结合辐射度量学、渲染方程、CookTorrance-
 <div align=center>
 <img src="/OpenGL/IBL/IBL.png" width="400" height="250">
 </div>
+
 ****
 
 ### SSR:
@@ -28,6 +31,7 @@ OpenGL实现Games202作业3,延迟渲染的屏幕光线追踪算法,并进行模
 <div align=center>
 <img src="/OpenGL/SSR/SSR.png" width="400" height="250">
 </div>
+
 ****
 
 
@@ -37,6 +41,7 @@ OpenGL实现Games202作业3,延迟渲染的屏幕光线追踪算法,并进行模
 <div align=center>
 <img src="SRP\PBR+IBL\PBR+IBL.png" width="400" height="200">
 </div>
+
 ****
 
 
