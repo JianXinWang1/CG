@@ -35,6 +35,17 @@ OpenGL实现Games202作业3,延迟渲染的屏幕光线追踪算法,并进行模
 ****
 
 
+### SSAO:
+
+OpenGL实现环境光遮蔽.
+<div align=center>
+    <img src="/OpenGL/SSAO/res.png" width="400" height="250">
+    <img src="/OpenGL/SSAO/ssao.png" width="400" height="250">
+</div>
+
+****
+
+
 ### Unity SRP:IBL+PBR
 
 基于Unity SRP的基于延迟渲染的CookTorrance-BRDF和IBL的PBR的光照.
