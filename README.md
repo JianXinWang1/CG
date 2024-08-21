@@ -11,7 +11,7 @@
 
 OpenGL实现Games202作业1,结合Shadow map与点光源,并进行滤波后处理生成软阴影.
 <div align=center>
-<img src="/OpenGL/PCSS/shadow.gif" width="400" height="300">
+<img src="/OpenGL/assets/PCSS/shadow.gif" width="400" height="300">
 </div>
 
 ****
@@ -20,7 +20,7 @@ OpenGL实现Games202作业1,结合Shadow map与点光源,并进行滤波后处�
 
 OpenGL实现Games202作业2,结合辐射度量学、渲染方程、CookTorrance-BRDF、Cubemap等实现了IBL的PBR的光照.
 <div align=center>
-<img src="/OpenGL/IBL/IBL.png" width="400" height="250">
+<img src="/OpenGL/assets/IBL/res.png" width="400" height="250">
 </div>
 
 ****
@@ -29,7 +29,7 @@ OpenGL实现Games202作业2,结合辐射度量学、渲染方程、CookTorrance-
 
 OpenGL实现Games202作业3,延迟渲染的屏幕光线追踪算法,并进行模糊处理.
 <div align=center>
-<img src="/OpenGL/SSR/SSR.png" width="400" height="250">
+<img src="/OpenGL/assets/SSR/res.png" width="400" height="250">
 </div>
 
 ****
@@ -39,8 +39,8 @@ OpenGL实现Games202作业3,延迟渲染的屏幕光线追踪算法,并进行模
 
 OpenGL实现环境光遮蔽.
 <div align=center>
-    <img src="/OpenGL/SSAO/res.png" width="400" height="250">
-    <img src="/OpenGL/SSAO/ssao.png" width="400" height="250">
+    <img src="/OpenGL/assets/SSAO/res.png" width="400" height="300">
+    <img src="/OpenGL/assets/SSAO/ssao.png" width="400" height="300">
 </div>
 
 ****
