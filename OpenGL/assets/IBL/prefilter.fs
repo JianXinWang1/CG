@@ -21,20 +21,20 @@ float DistributionGGX(vec3 N, vec3 H, float roughness)
     return nom / denom;
 }
 // ----------------------------------------------------------------------------
-float RadicalInverse_VdC(uint bits) 
-{
-     bits = (bits << 16u) | (bits >> 16u);
-     bits = ((bits & 0x55555555u) << 1u) | ((bits & 0xAAAAAAAAu) >> 1u);
-     bits = ((bits & 0x33333333u) << 2u) | ((bits & 0xCCCCCCCCu) >> 2u);
-     bits = ((bits & 0x0F0F0F0Fu) << 4u) | ((bits & 0xF0F0F0F0u) >> 4u);
-     bits = ((bits & 0x00FF00FFu) << 8u) | ((bits & 0xFF00FF00u) >> 8u);
-     return float(bits) * 2.3283064365386963e-10; // / 0x100000000
-}
-// ----------------------------------------------------------------------------
-vec2 Hammersley(uint i, uint N)
-{
-	return vec2(float(i)/float(N), RadicalInverse_VdC(i));
-}
+// float RadicalInverse_VdC(uint bits) 
+// {
+//      bits = (bits << 16u) | (bits >> 16u);
+//      bits = ((bits & 0x55555555u) << 1u) | ((bits & 0xAAAAAAAAu) >> 1u);
+//      bits = ((bits & 0x33333333u) << 2u) | ((bits & 0xCCCCCCCCu) >> 2u);
+//      bits = ((bits & 0x0F0F0F0Fu) << 4u) | ((bits & 0xF0F0F0F0u) >> 4u);
+//      bits = ((bits & 0x00FF00FFu) << 8u) | ((bits & 0xFF00FF00u) >> 8u);
+//      return float(bits) * 2.3283064365386963e-10; // / 0x100000000
+// }
+// // ----------------------------------------------------------------------------
+// vec2 Hammersley(uint i, uint N)
+// {
+// 	return vec2(float(i)/float(N), RadicalInverse_VdC(i));
+// }
 // ----------------------------------------------------------------------------
 vec3 ImportanceSampleGGX(vec2 Xi, vec3 N, float roughness)
 {
@@ -71,7 +71,9 @@ void main()
     
     for(uint i = 0u; i < SAMPLE_COUNT; ++i)
     {
-        vec2 Xi = Hammersley(i, SAMPLE_COUNT);
+        // 随机数
+        vec2 Xi = vec2(sin(i*53.7-8.0), sin(i*2.3+7.8*9));
+        // vec2 Xi = Hammersley(i, SAMPLE_COUNT);
         vec3 H = ImportanceSampleGGX(Xi, N, roughness);
         vec3 L  = normalize(2.0 * dot(V, H) * H - V);
 
