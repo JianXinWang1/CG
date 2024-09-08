@@ -34,7 +34,7 @@ Eigen::Matrix4f camera_matrix(Vec3f camera_point, Vec3f eye_point, Vec3f up) {
 
 
 Eigen::Matrix4f perspective_matrix() {
-    float l = -0.5, r = 0.5, b = -0.5 ,t = 0.5, n = -0.5, f = -3.5;
+    float l = -0.5, r = 0.5, b = -0.5 ,t = 0.5, n = -0.5, f = -5.5;
     Eigen::Matrix<float, 4, 4> p1;
     p1 <<
         n, 0, 0, 0,
@@ -72,6 +72,16 @@ Vec3f point2vp(Eigen::Matrix<float,4,4> v, Eigen::Matrix<float, 4, 4> p, Vec3f p
     //cout << point_hom << endl << endl;
     return Vec3f(point_hom[0], point_hom[1], point_hom[2]);
 }
+
+float compute_w(Eigen::Matrix<float, 4, 4> v, Eigen::Matrix<float, 4, 4> p, Vec3f point) {
+    Vector4f point_hom(point.x, point.y, point.z, 1.);
+
+    point_hom = v * point_hom;
+    point_hom = p * point_hom;
+    
+    return point_hom[3];
+}
+
 void line(Vec2f p1, Vec2f p2, TGAImage& image, TGAColor color) {
     // Bresenham算法，直线在x方向上每次增量为\Delta x=1，在y方向上每次的增量为\Delta y=k。
     //通过一个变量d将y方向上的累计增量记录下来，当d大于1时，标记点m进1，并对变量d进行-1操
@@ -126,14 +136,48 @@ Vec3f barycentric(Vec2f v1, Vec2f v2, Vec2f v3, Vec2f p)
 
 }
 
+bool IsInsideTriangle(Vec2f A, Vec2f B, Vec2f C, Vec2f p)
+{
+    double AB = (B.x - A.x) * (p.y - A.y) - (B.y - A.y) * (p.x - A.x);
+    double BC = (C.x - B.x) * (p.y - B.y) - (C.y - B.y) * (p.x - B.x);
+    double CA = (A.x - C.x) * (p.y - C.y) - (A.y - C.y) * (p.x - C.x);
+
+    if (((AB > 0 && BC > 0 && CA > 0) || (AB < 0 && BC < 0 && CA < 0)))
+        return true;
+    else
+        return false;
+}
+
+vector<vector<float>> msaa_check(Vec2f A, Vec2f B, Vec2f C, Vec2f p)
+{
+    vector<vector<float>>msaa_buffer;
+    for (float i = -0.25; i <= 0.25; i += 0.5) {
+        for (float j = -0.25; j <= 0.25; j += 0.5) {
+            double AB = (B.x - A.x) * (p.y+i - A.y) - (B.y - A.y) * (p.x+j - A.x);
+            double BC = (C.x - B.x) * (p.y+i - B.y) - (C.y - B.y) * (p.x+j - B.x);
+            double CA = (A.x - C.x) * (p.y+i - C.y) - (A.y - C.y) * (p.x+j - C.x);
+
+            if (((AB > 0 && BC > 0 && CA > 0) || (AB < 0 && BC < 0 && CA < 0))) {
+                msaa_buffer.push_back({ 1, i, j });
+            }
+            else {
+                msaa_buffer.push_back({ 0, i, j });
+            }
+        }
+    }
+    return msaa_buffer;
+}
+
+
+
 
 void triangle_render(Model* model,Vec3f p1, Vec3f p2, Vec3f p3,Vec2i uv1, Vec2i uv2, Vec2i uv3, TGAImage& image, vector<float>&buffer,
     int weith,int height, Vec3f n1, Vec3f n2, Vec3f n3, Vec3f camera_point,Vec3f light_dir,
-    Vec3f p1_prior, Vec3f p2_prior, Vec3f p3_prior) {
+    Vec3f p1_prior, Vec3f p2_prior, Vec3f p3_prior, float w1, float w2, float w3) {
      /*画线*/
-    /*line(p1, p2, image, color);
-    line(p2, p3, image, color);
-    line(p3, p1, image, color);*/
+    //line(p1, p2, image, color);
+    //line(p2, p3, image, color);
+    //line(p3, p1, image, color);
     // 模型坐标变换到屏幕坐标
     float ambient = 0.1; // 环境光
     
@@ -155,49 +199,76 @@ void triangle_render(Model* model,Vec3f p1, Vec3f p2, Vec3f p3,Vec2i uv1, Vec2i 
     y_max = max(y_max, y3);
 
 
-    
-    // 内部画点，重心坐标法或者点乘判断法
     for (int x = x_min-1; x <= x_max+1; x++) {
         for (int y = y_min-1; y <= y_max+1; y++) {
-            Vec3f bary_centric = barycentric(Vec2f(p1.x, p1.y), Vec2f(p2.x, p2.y), Vec2f(p3.x, p3.y), Vec2f((x+0.5)*2./weith-1., (y + 0.5) * 2. /height - 1.));
-            if (bary_centric.x >= 0&& bary_centric.y >= 0 && bary_centric.z >= 0){
-                int idx = y * weith + x;
-                if (idx >= buffer.size()) { continue; }
-                float p_depth = bary_centric.x * p1.z + bary_centric.y * p2.z + bary_centric.z * p3.z;
-                Vec3f interpertion_point(bary_centric.x * p1_prior.x + bary_centric.y * p2_prior.x + bary_centric.z * p3_prior.x,
-                    bary_centric.x * p1_prior.y + bary_centric.y * p2_prior.y + bary_centric.z * p3_prior.y,
-                    bary_centric.x * p1_prior.z + bary_centric.y * p2_prior.z + bary_centric.z * p3_prior.z);
-                Vec3f eye_light = camera_point - interpertion_point;
-                eye_light.normalize();
-                Vec3f normal(bary_centric.x * n1.x + bary_centric.y * n2.x + bary_centric.z * n3.x,
-                    bary_centric.x * n1.y + bary_centric.y * n2.y + bary_centric.z * n3.y, 
-                    bary_centric.x * n1.z + bary_centric.y * n2.z + bary_centric.z * n3.z);
-                normal.normalize();
-                light_dir.normalize();
-                Vec3f half_v = (eye_light + light_dir);
-                half_v.normalize();
+            vector<vector<float>> msaa_mask = msaa_check(Vec2f(x1, y1), Vec2f(x2, y2), Vec2f(x3, y3), Vec2f(x + 0.5, y + 0.5));
+            int check = 0;
+            for (int i = 0; i < 4; i++) {
+                if (msaa_mask[i][0] == 1)check += 1;
+            }
+            if (check == 0) {
+                continue;
+            }
+            Vec3f bary_centric = barycentric(Vec2f(x1, y1), Vec2f(x2, y2), Vec2f(x3, y3), Vec2f(x + 0.5, y + 0.5));
+            // 透视矫正
+            float k = 1.0 / (bary_centric.x * w1 + bary_centric.y * w2 + bary_centric.z * w3);
+            float alpha = bary_centric.x / (w1 * k);
+            float beta = bary_centric.y / (w2 * k);
+            float gama = bary_centric.z / (w3 * k);
 
-                float blin_phong = pow(max(0.f, half_v * normal),16);
+            Vec3f interpertion_point = p1_prior * alpha + p2_prior * beta + p3_prior * gama;
 
-             
-                // 物体指向光的方向和物体自身的法向量
-                float indensity =max(0.f, normal * light_dir);
+            Vec3f eye_light = camera_point - interpertion_point;
+            eye_light.normalize();
+            Vec3f normal = n1 * alpha + n2 * beta + n3 * gama;
+            normal.normalize();
+            light_dir.normalize();
+            Vec3f half_v = (eye_light + light_dir);
+            half_v.normalize();
+
+            float blin_phong = pow(max(0.f, half_v * normal), 16);
+            float indensity = max(0.f, normal * light_dir);
+            Vec2i color_index = Vec2i(alpha * uv1.x + beta * uv2.x + gama * uv3.x, alpha * uv1.y + beta * uv2.y + gama * uv3.y);
+            TGAColor color = model->diffuse(color_index);
+
+            unsigned char r = min(int(color.r * (indensity + ambient + blin_phong)), 255);
+            unsigned char g = min(int(color.g * (indensity + ambient + blin_phong)), 255);
+            unsigned char b = min(int(color.b * (indensity + ambient + blin_phong)), 255);
+
+            TGAColor res_color = TGAColor(r, g, b, 255);
 
 
+            for (int i = 0; i < 4;i++) {
+                if (msaa_mask[i][0] == 0) {
+                    continue;
+                }
+                bary_centric = barycentric(Vec2f(x1, y1), Vec2f(x2, y2), Vec2f(x3, y3), Vec2f(x + 0.5 + msaa_mask[i][1], y + 0.5 + msaa_mask[i][2]));
+                // 透视矫正
+                k = 1.0 / (bary_centric.x * w1 + bary_centric.y * w2 + bary_centric.z * w3);
+                alpha = bary_centric.x / (w1 * k);
+                beta = bary_centric.y / (w2 * k);
+                gama = bary_centric.z / (w3 * k);
+                float p_depth = (alpha * p1.z + beta * p2.z + gama * p3.z) / 2.0 + 0.5;
+                int idx = 0;
+            
+                if (i == 0) {
+                    idx = y*weith * 2 + x * 2;
+                }
+                else if (i == 1) {
+                    idx = y * weith * 2 + x * 2 + 1;
+                }
+                else if (i == 2) {
+                    idx = y * weith * 2 + height + x*2;
+                }
+                else {
+                    idx = y * weith * 2 + height + x*2 + 1;
+                }
                 // 沿-z
                 if (buffer[idx] < p_depth) {
                     buffer[idx] = p_depth;
-                    Vec2i color_index = Vec2i(bary_centric.x * uv1.x + bary_centric.y * uv2.x + bary_centric.z * uv3.x,
-                        bary_centric.x * uv1.y + bary_centric.y * uv2.y + bary_centric.z * uv3.y);
-                    TGAColor color = model->diffuse(color_index);
-
-                    unsigned char r = min(int(color.r * (indensity + ambient + blin_phong)), 255);
-                    unsigned char g = min(int(color.g * (indensity + ambient + blin_phong)), 255);
-                    unsigned char b = min(int(color.b * (indensity + ambient + blin_phong)), 255);
-
-                    TGAColor res = TGAColor(r, g, b , 255);
-                    image.set(x, y, res);
+                    image.set(x, y, res_color);
                 }
+                
             }
         }
     }
@@ -208,7 +279,7 @@ void triangle_render(Model* model,Vec3f p1, Vec3f p2, Vec3f p3,Vec2i uv1, Vec2i 
 void drawAfrican(Model* model, TGAImage& image,Vec3f light, int weith, int height,
     Eigen::Matrix4f camera_matrix, Eigen::Matrix4f p_matrix, Vec3f camera_point) {
     // 深度缓存
-    vector<float>buffer(weith * height, -99999999999.);
+    vector<float>buffer(height* 2 * weith * 2, -99999999999.);
     for (int i = 0; i < model->nfaces(); i++) {
         std::vector<int> face = model->face(i); 
         Vec3f p1_prior = model->vert(face[0]);
@@ -227,8 +298,13 @@ void drawAfrican(Model* model, TGAImage& image,Vec3f light, int weith, int heigh
         Vec3f p1 = point2vp(camera_matrix, p_matrix,  p1_prior);
         Vec3f p2 = point2vp(camera_matrix, p_matrix,p2_prior);
         Vec3f p3 = point2vp(camera_matrix, p_matrix, p3_prior);
+
+        float w1 = compute_w(camera_matrix, p_matrix, p1_prior);
+        float w2 = compute_w(camera_matrix, p_matrix, p2_prior);
+        float w3 = compute_w(camera_matrix, p_matrix, p3_prior);
+
         // 背面裁剪=过滤法线和光照夹角过大,渲染完前面，背面把前面覆盖掉了
-        triangle_render(model,p1, p2, p3,uv1,uv2,uv3, image,  buffer,weith,height,n1,n2,n3,camera_point,light,p1_prior,p2_prior,p3_prior);
+        triangle_render(model,p1, p2, p3,uv1,uv2,uv3, image,  buffer,weith,height,n1,n2,n3,camera_point,light,p1_prior,p2_prior,p3_prior,w1,w2,w3);
 
     }
 }

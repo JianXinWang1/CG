@@ -1,6 +1,7 @@
 ### Tinyrender:
+需要安装Eigen库
 
-基于C++实现的软光栅化器，主要实现内容包括MVP变换、重心坐标插值、顶点着色、纹理映射、背面剔除、深度测试、Blinn-Phong光照模型.
+基于C++实现的软光栅化器，主要实现内容包括MVP变换、重心坐标插值、MSAA、透视矫正、背面剔除、深度测试、Blinn-Phong光照模型.
 <div align=center>
 <img src="/TinyRender/model.jpg" width="400" height="400">
 </div>

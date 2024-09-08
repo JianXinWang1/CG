@@ -72,17 +72,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)include\tools;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)include\tools;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)include\tools;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)include\tools;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)exe\</OutDir>
+    <IncludePath>$(SolutionDir)include\tools;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)include\tools;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)exe\</OutDir>
+    <IncludePath>$(SolutionDir)include\tools;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)include\tools;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -90,6 +98,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)TinyRender\include\tools;$(SolutionDir)TinyRender\include\Eigen\eigen-3.4.0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,6 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)TinyRender\include\tools;$(SolutionDir)TinyRender\include\Eigen\eigen-3.4.0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,7 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\ComputerGeometry\TinyRender\TinyRender\include\Eigen\eigen-3.4.0;D:\ComputerGeometry\TinyRender\TinyRender\include\tools</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TinyRender\include\tools;$(SolutionDir)TinyRender\include\Eigen\eigen-3.4.0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,7 +144,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\ComputerGeometry\TinyRender\TinyRender\include\Eigen\eigen-3.4.0;D:\ComputerGeometry\TinyRender\TinyRender\include\tools</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TinyRender\include\tools;$(SolutionDir)TinyRender\include\Eigen\eigen-3.4.0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
