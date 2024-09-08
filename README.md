@@ -57,7 +57,7 @@ OpenGL实现环境光遮蔽.
 ****
 
 
-### Unity SRP:IBL+PBR
+### Unity SRP:Shadow map
 
 基于Unity SRP的定向光的阴影.
 <div align=center>
