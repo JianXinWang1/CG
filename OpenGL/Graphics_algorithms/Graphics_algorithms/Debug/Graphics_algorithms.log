@@ -1,5 +1,4 @@
-﻿  glad.c
-  IBL.cpp
-  LINK : 没有找到 D:\ComputerGeometry\git\CG\CG\OpenGL\Graphics_algorithms\Debug\Graphics_algorithms.exe 或上一个增量链接没有生成它；正在执行完全链接
+﻿  SSR.cpp
+D:\ComputerGeometry\git\CG\CG\OpenGL\Graphics_algorithms\Graphics_algorithms\SSR.cpp(135,19): warning C4101: “ssrColorBufferBlur”: 未引用的局部变量
 LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
   Graphics_algorithms.vcxproj -> D:\ComputerGeometry\git\CG\CG\OpenGL\Graphics_algorithms\Debug\Graphics_algorithms.exe

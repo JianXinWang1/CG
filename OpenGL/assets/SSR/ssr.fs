@@ -1,50 +1,60 @@
 #version 330 core
-out float FragColor;
+out vec4 FragColor;
 
 in vec2 TexCoords;
 
 uniform sampler2D gPosition;
 uniform sampler2D gNormal;
-uniform sampler2D texNoise;
-
-uniform vec3 samples[64];
-
-int kernelSize = 64;
-float radius = 0.25;
-float bias = 0.025;
-
-const vec2 noiseScale = vec2(800.0/4.0, 600.0/4.0); 
+uniform sampler2D gAlbedo;
 
 uniform mat4 projection;
-
+uniform vec3 cameraPosition;
 void main()
-{
+{   
+    const int step = 3999;
+    float dt = 0.02;    
+    // 从gbuffer获取数据
+    vec3 FragPos = texture(gPosition, TexCoords).rgb;
+    float judge = texture(gAlbedo, TexCoords).w;
+    vec3 Normal = texture(gNormal, TexCoords).rgb;
+    vec3 Diffuse = texture(gAlbedo, TexCoords).rgb;
 
-    vec3 fragPos = texture(gPosition, TexCoords).xyz;
-    vec3 normal = normalize(texture(gNormal, TexCoords).rgb);
-    vec3 randomVec = normalize(texture(texNoise, TexCoords * noiseScale).xyz);
-
-    vec3 tangent = normalize(randomVec - normal * dot(randomVec, normal));
-    vec3 bitangent = cross(normal, tangent);
-    mat3 TBN = mat3(tangent, bitangent, normal);
-
-    float occlusion = 0.0;
-    for(int i = 0; i < kernelSize; ++i)
-    {
-        vec3 samplePos = TBN * samples[i]; 
-        samplePos = fragPos + samplePos * radius; 
-        
-        vec4 offset = vec4(samplePos, 1.0);
-        offset = projection * offset; 
-        offset.xyz /= offset.w; 
-        offset.xyz = offset.xyz * 0.5 + 0.5; 
-
-        float sampleDepth = texture(gPosition, offset.xy).z; // get depth value of kernel sample
-
-        float rangeCheck = smoothstep(0.0, 1.0, radius / abs(fragPos.z - sampleDepth));
-        occlusion += (sampleDepth >= samplePos.z + bias ? 1.0 : 0.0) * rangeCheck;           
-    }
-    occlusion = 1.0 - (occlusion / kernelSize);
+    vec3 camera2Pos = FragPos - cameraPosition;
     
-    FragColor = occlusion;
+    // 未超出边界
+    int res = 0;
+    // rgb-a掩码
+
+    if(judge == 0.0f){
+
+        vec3 reflectDir = normalize(reflect(camera2Pos, Normal));
+        for(int i=1;i<step;i++){
+            float d= dt * i;
+            vec3 newPos = FragPos+d*reflectDir;
+            vec4 pnewPos = projection * vec4(newPos,1.0f);
+            vec3 pnewPos3 = pnewPos.xyz/pnewPos.w;
+            vec2 pos2Tex = (pnewPos3.xy+1.0)/2.0;
+            if(pos2Tex.x>1.0 || pos2Tex.x<0.0 ||pos2Tex.y>1.0||pos2Tex.y<0.0){
+                FragColor = vec4(Diffuse.rgb,1.0f);
+                res = 1;
+                break;
+            }
+            float depthsub = newPos.z - texture(gPosition,pos2Tex.xy).z;
+            if(depthsub<0 && texture(gAlbedo,pos2Tex.xy).w ==1.0&&abs(depthsub)<0.06){
+                FragColor = vec4(texture(gAlbedo,pos2Tex.xy).rgb * Diffuse,1.0f);
+                res = 1;
+                break;
+            }
+        }
+    }
+    else{
+        FragColor = vec4(Diffuse.rgb,1.0f);
+    }
+    if(res==0){
+        FragColor = vec4(Diffuse.rgb,1.0f);
+    }
+    
+
 }
+
+    

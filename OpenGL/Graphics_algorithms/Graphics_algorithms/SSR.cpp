@@ -78,30 +78,22 @@ int main()
         return -1;
     }
 
-    // configure global opengl state
-    // -----------------------------
+
     glEnable(GL_DEPTH_TEST);
 
-    // build and compile shaders
-    // -------------------------
     Shader shaderGeometryPass("../../assets/SSR/ssr_geometry.vs", "../../assets/SSR/ssr_geometry.fs");
-    Shader shaderLightingPass("../../assets/SSR/ssr.vs", "../../assets/SSR/ssr_lighting.fs");
-    Shader shaderSSR("../../assets/SSR/ssr.vs", "../../assets/SSR/ssr.fs");
-    Shader shaderSSRBlur("../../assets/SSR/ssr.vs", "../../assets/SSR/ssr_blur.fs");
+    Shader ssrPass("../../assets/SSR/ssr.vs", "../../assets/SSR/ssr.fs");
 
-
-    // load models
-    // -----------
     Model backpack("../../model/ldjj/Raiden Boss_PC_Safe_v1.0.pmx");
     unsigned int water = loadTexture("../../assets/SSR/water.png");
 
-    // configure g-buffer framebuffer
-    // ------------------------------
+    // g-buffer
     unsigned int gBuffer;
     glGenFramebuffers(1, &gBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, gBuffer);
     unsigned int gPosition, gNormal, gAlbedo;
-    // position color buffer
+
+    // position
     glGenTextures(1, &gPosition);
     glBindTexture(GL_TEXTURE_2D, gPosition);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
@@ -110,21 +102,23 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, gPosition, 0);
-    // normal color buffer
+
+    // normal
     glGenTextures(1, &gNormal);
     glBindTexture(GL_TEXTURE_2D, gNormal);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, gNormal, 0);
-    // color + specular color buffer
+
+    // Albedo
     glGenTextures(1, &gAlbedo);
     glBindTexture(GL_TEXTURE_2D, gAlbedo);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT2, GL_TEXTURE_2D, gAlbedo, 0);
-    // tell OpenGL which color attachments we'll use (of this framebuffer) for rendering 
+
     unsigned int attachments[3] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 };
     glDrawBuffers(3, attachments);
 
@@ -140,21 +134,13 @@ int main()
     glGenFramebuffers(1, &ssrBlurFBO);
     unsigned int  ssrColorBufferBlur;
 
-    // 模糊
-    glBindFramebuffer(GL_FRAMEBUFFER, ssrBlurFBO);
-    glGenTextures(1, &ssrColorBufferBlur);
-    glBindTexture(GL_TEXTURE_2D, ssrColorBufferBlur);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, ssrColorBufferBlur, 0);
 
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     unsigned int flectFBO;
     glGenFramebuffers(1, &flectFBO); 
     glBindFramebuffer(GL_FRAMEBUFFER, flectFBO);
     unsigned int flectBuffer;
+
     //color buffer
     glGenTextures(1, &flectBuffer);
     glBindTexture(GL_TEXTURE_2D, flectBuffer);
@@ -167,73 +153,29 @@ int main()
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 
-    std::uniform_real_distribution<GLfloat> randomFloats(0.0, 1.0); 
-    std::default_random_engine generator;
-    std::vector<glm::vec3> ssaoKernel;
-    for (unsigned int i = 0; i < 64; ++i)
-    {
-        glm::vec3 sample(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, randomFloats(generator));
-        sample = glm::normalize(sample);
-        sample *= randomFloats(generator);
-        float scale = float(i) / 64.0f;
+    // shader program
+    ssrPass.use();
+    ssrPass.setInt("gPosition", 0);
+    ssrPass.setInt("gNormal", 1);
+    ssrPass.setInt("gAlbedo", 2);
+    ssrPass.setInt("flectBuffer", 3);
 
-        scale = ourLerp(0.1f, 1.0f, scale * scale);
-        sample *= scale;
-        ssaoKernel.push_back(sample);
-    }
-
-    std::vector<glm::vec3> ssaoNoise;
-    for (unsigned int i = 0; i < 16; i++)
-    {
-        glm::vec3 noise(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, 0.0f); // rotate around z-axis (in tangent space)
-        ssaoNoise.push_back(noise);
-    }
-    unsigned int noiseTexture; glGenTextures(1, &noiseTexture);
-    glBindTexture(GL_TEXTURE_2D, noiseTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, 4, 4, 0, GL_RGB, GL_FLOAT, &ssaoNoise[0]);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-    // lighting info
-    // -------------
-    glm::vec3 lightPos = glm::vec3(0.0, 2.0, 2.0);
-    glm::vec3 lightColor = glm::vec3(1.0, 1.0, 1.0);
-
-    // shader configuration
-    // --------------------
-    shaderLightingPass.use();
-    shaderLightingPass.setInt("gPosition", 0);
-    shaderLightingPass.setInt("gNormal", 1);
-    shaderLightingPass.setInt("gAlbedo", 2);
-    shaderLightingPass.setInt("flectBuffer", 3);
-    shaderSSR.use();
-    shaderSSR.setInt("gPosition", 0);
-    shaderSSR.setInt("gNormal", 1);
-    shaderSSR.setInt("texNoise", 2);
-    shaderSSR.use();
-    shaderSSR.setInt("ssaoInput", 0);
 
     
 
     // render loop
-    // -----------
     while (!glfwWindowShouldClose(window))
     {
-
         float currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
-
         processInput(window);
 
-    
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
+        // 绘制gbuffer
         glBindFramebuffer(GL_FRAMEBUFFER, gBuffer);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 50.0f);
@@ -247,14 +189,16 @@ int main()
         model = glm::translate(model, glm::vec3(0.0, 7.0f, 0.0f));
         model = glm::scale(model, glm::vec3(7.5f, 7.5f, 7.5f));
         shaderGeometryPass.setMat4("model", model);
+
+        // 水面掩码
         shaderGeometryPass.setInt("invertedNormals", 1); 
         shaderGeometryPass.setInt("water", 1);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D,water);
         renderCube();
+
+        // 模型掩码
         shaderGeometryPass.setInt("invertedNormals", 0);
-        
-   
         model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.0));
         model = glm::scale(model, glm::vec3(0.1f));
@@ -262,33 +206,18 @@ int main()
         backpack.Draw(shaderGeometryPass);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-
-
+        // 绘制到屏幕
         glClear(GL_COLOR_BUFFER_BIT);
-        shaderLightingPass.use();
-
-        glm::vec3 lightPosView = glm::vec3(camera.GetViewMatrix() * glm::vec4(lightPos, 1.0));
-        shaderLightingPass.setInt("test", 1);
-        shaderLightingPass.setVec3("light.Position", lightPosView);
-        shaderLightingPass.setVec3("light.Color", lightColor);
-        shaderLightingPass.setVec3("cameraPosition", glm::vec3(camera.GetViewMatrix() * glm::vec4(camera.Position, 1.0)));
-  
-        const float linear = 0.09f;
-        const float quadratic = 0.032f;
-        shaderLightingPass.setFloat("light.Linear", linear);
-        shaderLightingPass.setFloat("light.Quadratic", quadratic);
-        shaderLightingPass.setMat4("projection", projection);
+        ssrPass.use();
+        ssrPass.setVec3("cameraPosition", glm::vec3(camera.GetViewMatrix() * glm::vec4(camera.Position, 1.0)));
+        ssrPass.setMat4("projection", projection);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, gPosition);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, gNormal);
         glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, gAlbedo);
-
         renderQuad();
-
-
-
 
 
         glfwSwapBuffers(window);
