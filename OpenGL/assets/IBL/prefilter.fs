@@ -72,7 +72,7 @@ void main()
     for(uint i = 0u; i < SAMPLE_COUNT; ++i)
     {
         // 随机数
-        vec2 Xi = vec2(sin(i*53.7-8.0), sin(i*2.3+7.8*9));
+        vec2 Xi = vec2(sin(i*53.7-8.0) + 0.5, sin(i*2.3+7.8*9) + 0.5);
         // vec2 Xi = Hammersley(i, SAMPLE_COUNT);
         vec3 H = ImportanceSampleGGX(Xi, N, roughness);
         vec3 L  = normalize(2.0 * dot(V, H) * H - V);
@@ -83,13 +83,9 @@ void main()
             float D   = DistributionGGX(N, H, roughness);
             float NdotH = max(dot(N, H), 0.0);
             float HdotV = max(dot(H, V), 0.0);
-            float pdf = D * NdotH / (4.0 * HdotV) + 0.0001; 
-
-            float resolution = 512.0; 
-            float saTexel  = 4.0 * PI / (6.0 * resolution * resolution);
-            float saSample = 1.0 / (float(SAMPLE_COUNT) * pdf + 0.0001);
-
-            float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel); 
+            const float MAX_REFLECTION_LOD = 4.0;
+     
+            float mipLevel = MAX_REFLECTION_LOD * roughness; 
             
             prefilteredColor += textureLod(environmentMap, L, mipLevel).rgb * NdotL;
             totalWeight      += NdotL;
