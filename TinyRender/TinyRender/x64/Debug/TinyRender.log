@@ -1,206 +1,139 @@
-﻿  geometry.cpp
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244: “初始化”: 从“const t”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244:             t=int
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244:         and
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244: “初始化”: 从“const t”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244:             t=int
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244:         and
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244: “初始化”: 从“const t”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244:             t=int
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244:         and
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244:         ]
-  model.cpp
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244:         and
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244:             t=int
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244:         and
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244:             t=int
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244:         ]
-  tgaimage.cpp
-  main.cpp
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+﻿  main.cpp
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\GenericPacketMathFunctions.h(676,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\GenericPacketMathFunctions.h(676,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,12): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,23): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,34): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(90,45): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(182,19): warning C4305: “初始化”: 从“double”到“float”截断
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(178,19): warning C4305: “初始化”: 从“double”到“float”截断
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(185,14): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(181,14): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(185,45): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(181,45): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(186,14): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(182,14): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(186,46): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(182,46): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(187,14): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(183,14): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(187,46): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(183,46): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(202,16): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(200,16): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(203,20): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(201,20): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,120): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,120): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,120): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,120): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,120): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,96): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,96): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,96): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,96): warning C4244:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,96): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,111): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,111): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,111): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,111): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(204,111): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,87): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,87): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,87): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,87): warning C4244:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(202,87): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,108): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,108): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,108): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,108): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,108): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,112): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,112): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,112): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,112): warning C4244:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,112): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,99): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,99): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,99): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,99): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(212,99): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,103): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,103): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,103): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,103): warning C4244:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(203,103): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(214,21): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(205,25): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(229,30): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(210,31): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,113): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,113): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,113): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,113): warning C4244:             t=int
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,113): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(224,38): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,68): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,68): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,68): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,68): warning C4244:             t=int
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(231,68): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,121): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,121): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,121): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,121): warning C4244:             t=int
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,121): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,130): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,130): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,130): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,130): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,130): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,76): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,76): warning C4244:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,76): warning C4244:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,76): warning C4244:             t=int
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(226,76): warning C4244:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,103): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,103): warning C4244:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,103): warning C4244:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,103): warning C4244:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(245,103): warning C4244:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(248,41): warning C4305: “参数”: 从“double”到“const _Ty”截断
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(248,41): warning C4305:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(248,41): warning C4305:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(248,41): warning C4305:             _Ty=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\include\tools\helper.h(248,41): warning C4305:         ]
   (编译源文件“main.cpp”)
   
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(247,25): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-  (编译源文件“main.cpp”)
-  
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(251,31): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-  (编译源文件“main.cpp”)
-  
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(282,49): warning C4305: “参数”: 从“double”到“const _Ty”截断
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(282,49): warning C4305:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(282,49): warning C4305:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(282,49): warning C4305:             _Ty=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\include\tools\helper.h(282,49): warning C4305:         ]
-  (编译源文件“main.cpp”)
-  
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305: “参数”: 从“double”到“t”截断
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305: “参数”: 从“double”到“t”截断
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305:         ]
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305: “参数”: 从“double”到“t”截断
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305:         with
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305:         [
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305:             t=float
-D:\ComputerGeometry\git\revision\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305:         ]
-  正在生成代码...
-  LINK : 没有找到 D:\ComputerGeometry\git\revision\CG\TinyRender\exe\TinyRender.exe 或上一个增量链接没有生成它；正在执行完全链接
-  TinyRender.vcxproj -> D:\ComputerGeometry\git\revision\CG\TinyRender\exe\TinyRender.exe
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305: “参数”: 从“double”到“t”截断
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,32): warning C4305:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305: “参数”: 从“double”到“t”截断
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,27): warning C4305:         ]
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305: “参数”: 从“double”到“t”截断
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305:         with
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305:         [
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305:             t=float
+D:\ComputerGeometry\git\CG\CG\TinyRender\TinyRender\main.cpp(8,21): warning C4305:         ]
+  TinyRender.vcxproj -> D:\ComputerGeometry\git\CG\CG\TinyRender\exe\TinyRender.exe
