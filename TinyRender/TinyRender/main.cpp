@@ -16,9 +16,11 @@ int main(int argc, char** argv) {
     TGAImage image(weith, height, TGAImage::RGB);
 	Eigen::Matrix4f c2w_matrix = camera_matrix(camera_point, eye_point, Vec3f(0, 1, 0));
 	Eigen::Matrix4f p_matrix = perspective_matrix();
+
+	// helper.h
 	drawAfrican(model, image,light_dir, weith, height,c2w_matrix,p_matrix, camera_point);
 
-	image.flip_vertically(); // i want to have the origin at the left bottom corner of the image
+	image.flip_vertically(); 
 	image.write_tga_file("output.tga");
     delete model;
 	return 0;

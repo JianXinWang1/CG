@@ -35,11 +35,6 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
-float ourLerp(float a, float b, float f)
-{
-    return a + f * (b - a);
-}
-
 int main()
 {
     // glfw: initialize and configure
@@ -159,9 +154,6 @@ int main()
     ssrPass.setInt("gNormal", 1);
     ssrPass.setInt("gAlbedo", 2);
     ssrPass.setInt("flectBuffer", 3);
-
-
-    
 
     // render loop
     while (!glfwWindowShouldClose(window))

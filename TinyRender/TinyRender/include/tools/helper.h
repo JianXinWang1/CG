@@ -170,18 +170,18 @@ vector<vector<float>> msaa_check(Vec2f A, Vec2f B, Vec2f C, Vec2f p)
 
 
 
+// 光栅化、着色函数
+void triangle_render(Model* model,vector<Vec3f>ps, vector<Vec2i>uvs, TGAImage& image, vector<float>&buffer,
+    int weith,int height, vector<Vec3f>ns, Vec3f camera_point,Vec3f light_dir,
+    vector<Vec3f>ps_prior, vector<float>ws) {
 
-void triangle_render(Model* model,Vec3f p1, Vec3f p2, Vec3f p3,Vec2i uv1, Vec2i uv2, Vec2i uv3, TGAImage& image, vector<float>&buffer,
-    int weith,int height, Vec3f n1, Vec3f n2, Vec3f n3, Vec3f camera_point,Vec3f light_dir,
-    Vec3f p1_prior, Vec3f p2_prior, Vec3f p3_prior, float w1, float w2, float w3) {
-
-    float ambient = 0.1; // 环境光
+    // 环境光
+    float ambient = 0.1;
     
-    // 到图像坐标系
-    float x1 = (p1.x + 1.) * weith / 2., y1 = (p1.y + 1.) * height / 2. ;
-    float x2 = (p2.x + 1.) * weith / 2. , y2 = (p2.y + 1.) * height / 2.;
-    float x3 = (p3.x + 1.) * weith / 2. , y3 = (p3.y + 1.) * height / 2.;
-
+    // 到图像坐标
+    float x1 = (ps[0].x + 1.) * weith / 2., y1 = (ps[0].y + 1.) * height / 2.;
+    float x2 = (ps[1].x + 1.) * weith / 2. , y2 = (ps[1].y + 1.) * height / 2.;
+    float x3 = (ps[2].x + 1.) * weith / 2. , y3 = (ps[2].y + 1.) * height / 2.;
 
     // 图像坐标系包围框
     float x_min = min(x1, x2);
@@ -202,20 +202,20 @@ void triangle_render(Model* model,Vec3f p1, Vec3f p2, Vec3f p3,Vec2i uv1, Vec2i 
             if (IsInsideTriangle(Vec2f(x1, y1), Vec2f(x2, y2), Vec2f(x3, y3), Vec2f(x + 0.5, y + 0.5))) {
                 Vec3f bary_centric = barycentric(Vec2f(x1, y1), Vec2f(x2, y2), Vec2f(x3, y3), Vec2f(x + 0.5, y + 0.5));
                 // 透视矫正
-                float k = 1.0 / (bary_centric.x * w1 + bary_centric.y * w2 + bary_centric.z * w3);
-                float alpha = bary_centric.x / (w1 * k);
-                float beta = bary_centric.y / (w2 * k);
-                float gama = bary_centric.z / (w3 * k);
+                float k = 1.0 / (bary_centric.x * ws[0] + bary_centric.y * ws[1] + bary_centric.z * ws[2]);
+                float alpha = bary_centric.x / (ws[0] * k);
+                float beta = bary_centric.y / (ws[1] * k);
+                float gama = bary_centric.z / (ws[2] * k);
 
-                float p_depth = (alpha * p1.z + beta * p2.z + gama * p3.z) / 2.0 + 0.5;
+                float p_depth = (alpha * ps[0].z + beta * ps[1].z + gama * ps[2].z) / 2.0 + 0.5;
                 int idx = y * height + x;
                 if (buffer[idx] < p_depth) {
                     buffer[idx] = p_depth;
-                    Vec3f interpertion_point = p1_prior * alpha + p2_prior * beta + p3_prior * gama;
+                    Vec3f interpertion_point = ps_prior[0] * alpha + ps_prior[1] * beta + ps_prior[2] * gama;
 
                     Vec3f eye_light = camera_point - interpertion_point;
                     eye_light.normalize();
-                    Vec3f normal = n1 * alpha + n2 * beta + n3 * gama;
+                    Vec3f normal = ns[0] * alpha + ns[1] * beta + ns[2] * gama;
                     normal.normalize();
                     light_dir.normalize();
                     Vec3f half_v = (eye_light + light_dir);
@@ -223,7 +223,7 @@ void triangle_render(Model* model,Vec3f p1, Vec3f p2, Vec3f p3,Vec2i uv1, Vec2i 
 
                     float blin_phong = pow(max(0.f, half_v * normal), 16);
                     float indensity = max(0.f, normal * light_dir);
-                    Vec2i color_index = Vec2i(alpha * uv1.x + beta * uv2.x + gama * uv3.x, alpha * uv1.y + beta * uv2.y + gama * uv3.y);
+                    Vec2i color_index = Vec2i(alpha * uvs[0].x + beta * uvs[1].x + gama * uvs[2].x, alpha * uvs[0].y + beta * uvs[1].y + gama * uvs[2].y);
                     TGAColor color = model->diffuse(color_index);
 
                     unsigned char r = min(int(color.r * (indensity + ambient + blin_phong)), 255);
@@ -269,8 +269,13 @@ void drawAfrican(Model* model, TGAImage& image,Vec3f light, int weith, int heigh
         float w2 = compute_w(camera_matrix, p_matrix, p2_prior);
         float w3 = compute_w(camera_matrix, p_matrix, p3_prior);
 
-        // 背面裁剪=过滤法线和光照夹角过大,渲染完前面，背面把前面覆盖掉了
-        triangle_render(model,p1, p2, p3,uv1,uv2,uv3, image,  buffer,weith,height,n1,n2,n3,camera_point,light,p1_prior,p2_prior,p3_prior,w1,w2,w3);
+        vector<Vec3f>ps{ p1,p2,p3 };
+        vector<Vec2i>uvs{ uv1,uv2,uv3 };
+        vector<float>ws{w1,w2,w3 };
+        vector<Vec3f>ps_prior{p1_prior,p2_prior,p3_prior};
+        vector<Vec3f>ns{n1, n2, n3};
+
+        triangle_render(model, ps, uvs, image,  buffer,weith,height,ns, camera_point,light,ps_prior,ws);
 
     }
 }
