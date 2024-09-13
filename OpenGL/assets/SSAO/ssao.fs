@@ -12,6 +12,7 @@ uniform vec3 samples[64];
 // 数量 采样半径 随机扰动
 int kernelSize = 64;
 float radius = 0.5;
+// 深度是离散的，需要加上保护值
 float bias = 0.025;
 
 // 要获取16个随机采样向量需要将-1 1的纹理坐标范围映射出去
@@ -46,7 +47,7 @@ void main()
 
         float sampleDepth = texture(gPosition, offset.xy).z; // get depth value of kernel sample
         
-  
+        // rangeCheck 如果深度相差太大(和半径相对比)了,则减小occlusion
         float rangeCheck = smoothstep(0.0, 1.0, radius / abs(fragPos.z - sampleDepth));
         occlusion += (sampleDepth >= samplePos.z + bias ? 1.0 : 0.0) * rangeCheck;           
     }
