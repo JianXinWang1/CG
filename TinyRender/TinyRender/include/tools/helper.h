@@ -29,7 +29,6 @@ Eigen::Matrix4f camera_matrix(Vec3f camera_point, Vec3f eye_point, Vec3f up) {
         0, 0, 1, -camera_point.z,
         0, 0, 0, 1;
     return r_view_inv * t_view;
-
 }
 
 
@@ -57,7 +56,6 @@ Eigen::Matrix4f perspective_matrix() {
     Eigen::Matrix<float, 4, 4> res = tem*p1;
 
     return res;
-
 }
 
 
@@ -133,7 +131,6 @@ Vec3f barycentric(Vec2f v1, Vec2f v2, Vec2f v3, Vec2f p)
     float gamma = 1 - alpha - beta;
 
     return Vec3f(alpha, beta, gamma);
-
 }
 
 bool IsInsideTriangle(Vec2f A, Vec2f B, Vec2f C, Vec2f p)
@@ -233,12 +230,9 @@ void triangle_render(Model* model,vector<Vec3f>ps, vector<Vec2i>uvs, TGAImage& i
                     TGAColor res_color = TGAColor(r, g, b, 255);
                     image.set(x, y, res_color);
                 }
-            
             }
-            
         }
     }
-
 }
 
 //画非洲老哥的头
