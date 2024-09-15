@@ -18,11 +18,11 @@ void main()
     gNormal = normalize(Normal);
     // 设置RGB-A掩码
     if(invertedNormals){
-        gAlbedo.rgb = texture(water,TexCoords).rgb;
+        gAlbedo.rgb = texture(water, TexCoords).rgb;
         gAlbedo.a = 0.0f;
     }
     else{
-        gAlbedo.rgb = texture(baseColor,TexCoords).rgb;
+        gAlbedo.rgb = texture(baseColor, TexCoords).rgb;
         gAlbedo.a = 1.0f;
     }
     

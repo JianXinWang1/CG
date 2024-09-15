@@ -11,10 +11,8 @@ uniform sampler2D ssao;
 
 void main()
 {             
-
     vec3 Diffuse = texture(gAlbedo, TexCoords).rgb;
     float AmbientOcclusion = texture(ssao, TexCoords).r;
     
-
     FragColor = vec4(Diffuse*AmbientOcclusion, 1.0);
 }

@@ -61,7 +61,7 @@ void main()
 {		
     vec3 N = normalize(WorldPos);
     
-
+    // 夹角近似，简化查找表
     vec3 R = N;
     vec3 V = R;
 

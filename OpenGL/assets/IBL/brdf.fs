@@ -4,20 +4,7 @@ in vec2 TexCoords;
 
 const float PI = 3.14159265359;
 
-float RadicalInverse_VdC(uint bits) 
-{
-     bits = (bits << 16u) | (bits >> 16u);
-     bits = ((bits & 0x55555555u) << 1u) | ((bits & 0xAAAAAAAAu) >> 1u);
-     bits = ((bits & 0x33333333u) << 2u) | ((bits & 0xCCCCCCCCu) >> 2u);
-     bits = ((bits & 0x0F0F0F0Fu) << 4u) | ((bits & 0xF0F0F0F0u) >> 4u);
-     bits = ((bits & 0x00FF00FFu) << 8u) | ((bits & 0xFF00FF00u) >> 8u);
-     return float(bits) * 2.3283064365386963e-10; // / 0x100000000
-}
-// ----------------------------------------------------------------------------
-vec2 Hammersley(uint i, uint N)
-{
-	return vec2(float(i)/float(N), RadicalInverse_VdC(i));
-}
+
 // ----------------------------------------------------------------------------
 vec3 ImportanceSampleGGX(vec2 Xi, vec3 N, float roughness)
 {
@@ -31,8 +18,9 @@ vec3 ImportanceSampleGGX(vec2 Xi, vec3 N, float roughness)
 	H.x = cos(phi) * sinTheta;
 	H.y = sin(phi) * sinTheta;
 	H.z = cosTheta;
-
-	vec3 up          = abs(N.z) < 0.999 ? vec3(0.0, 0.0, 1.0) : vec3(1.0, 0.0, 0.0);
+    
+    // TBN矩阵，将以上法线空间下的采样坐标转换到世界坐标系
+	vec3 up = abs(N.z) < 0.999 ? vec3(0.0, 0.0, 1.0) : vec3(1.0, 0.0, 0.0);
 	vec3 tangent   = normalize(cross(up, N));
 	vec3 bitangent = cross(N, tangent);
 	
@@ -73,18 +61,19 @@ vec2 IntegrateBRDF(float NdotV, float roughness)
 
     vec3 N = vec3(0.0, 0.0, 1.0);
     
+    // lut
     const uint SAMPLE_COUNT = 1024u;
     for(uint i = 0u; i < SAMPLE_COUNT; ++i)
     {
         // 重要性采样
-        vec2 Xi = Hammersley(i, SAMPLE_COUNT);
+        vec2 Xi = vec2(sin(i*53.7-367.8) + 0.5, sin(i*2.3+7.876*9) + 0.5);
         vec3 H = ImportanceSampleGGX(Xi, N, roughness);
         vec3 L = normalize(2.0 * dot(V, H) * H - V);
 
         float NdotL = max(L.z, 0.0);
         float NdotH = max(H.z, 0.0);
         float VdotH = max(dot(V, H), 0.0);
-
+        // 积分近似的后半部分
         if(NdotL > 0.0)
         {
             float G = GeometrySmith(N, V, L, roughness);

@@ -44,14 +44,14 @@ void main()
 
     float shadow = 0.0;
 
-    
     if(lightPixel.x >= 0 && lightPixel.x<=1 && lightPixel.y>=0 &&lightPixel.y<=1 && lightPixel.z-0.01>
     texture(depthTexture, vec2(lightPixel.x,lightPixel.y)).r){
+        
         float blockD = blockDepth(lightPixel,texSize);
         float posD = lightPixel.z;
         float div = size*(posD-blockD)/blockD;
-
         int culSize = clamp(int(div),0,5);
+
         // PCF filter
         if(culSize!=0&&culSize!=1){
             for(int i = -culSize;i<=culSize;i++){

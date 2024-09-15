@@ -205,12 +205,8 @@ int main()
     shaderSSAOBlur.use();
     shaderSSAOBlur.setInt("ssaoInput", 0);
 
-    // render loop
-    // -----------
     while (!glfwWindowShouldClose(window))
     {
-        // per-frame time logic
-        // --------------------
         float currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
@@ -272,9 +268,6 @@ int main()
         renderQuad();
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-
-        // 4. lighting pass: traditional deferred Blinn-Phong lighting with added screen-space ambient occlusion
-        // -----------------------------------------------------------------------------------------------------
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         renderShader.use();
         glActiveTexture(GL_TEXTURE0);
@@ -287,9 +280,6 @@ int main()
         glBindTexture(GL_TEXTURE_2D, ssaoColorBufferBlur);
         renderQuad();
 
-
-        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-        // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
     }

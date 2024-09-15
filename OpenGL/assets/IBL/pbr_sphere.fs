@@ -49,16 +49,19 @@ vec3 fresnelSchlick(float cosTheta, vec3 F0)
 // ----------------------------------------------------------------------------
 void main()
 {		
- 
+    // 自定义材质
     vec3 albedo = vec3(0.8,0.6,0.7);
-    float metallic = 0.8;
-    float roughness = 0.0;
+    float metallic = 0.5;
+    float roughness = 0.2;
     float ao = texture(aoMap, TexCoords).r;
-       
+
     vec3 N = getNormalFromMap();
     vec3 V = normalize(camPos - WorldPos);
+
+    // 天空盒无限大则假设物体在中心，用R采样
     vec3 R = reflect(-V, N); 
 
+    // 可以假设部分能量被吸收，不参与反射
     vec3 F0 = vec3(0.04); 
     F0 = mix(F0, albedo, metallic);
 
@@ -71,7 +74,7 @@ void main()
     vec3 irradiance = texture(irradianceMap, N).rgb;
     vec3 diffuse  = irradiance * albedo;
     
-   
+    // 根据粗糙度选择level
     const float MAX_REFLECTION_LOD = 4.0;
     vec3 prefilteredColor = textureLod(prefilterMap, R,  roughness * MAX_REFLECTION_LOD).rgb;    
     vec2 brdf  = texture(brdfLUT, vec2(max(dot(N, V), 0.0), roughness)).rg;
@@ -82,7 +85,7 @@ void main()
     vec3 color = ambient;
 
 
-    color = pow(color, vec3(1.0/2.2)); 
+    color = pow(prefilteredColor, vec3(1.0/2.2)); 
 
     FragColor = vec4(color , 1.0);
 }
