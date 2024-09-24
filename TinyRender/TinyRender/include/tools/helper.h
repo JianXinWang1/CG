@@ -193,9 +193,11 @@ void triangle_render(Model* model,vector<Vec3f>ps, vector<Vec2i>uvs, TGAImage& i
     float y_max = max(y1, y2);
     y_max = max(y_max, y3);
 
-    int line_check = 0;
     for (int x = x_min-1; x <= x_max+1; x++) {
         for (int y = y_min-1; y <= y_max+1; y++) {
+            if (x < 0 || x > weith || y < 0 || y > height) {
+                continue;
+            }
             if (IsInsideTriangle(Vec2f(x1, y1), Vec2f(x2, y2), Vec2f(x3, y3), Vec2f(x + 0.5, y + 0.5))) {
                 Vec3f bary_centric = barycentric(Vec2f(x1, y1), Vec2f(x2, y2), Vec2f(x3, y3), Vec2f(x + 0.5, y + 0.5));
                 // Í¸ÊÓ½ÃÕý
