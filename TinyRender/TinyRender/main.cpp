@@ -1,7 +1,7 @@
 #include "tgaimage.h"
 #include "helper.h"
 
-// È«¾Ö±äÁ¿£º¹âÕÕ£¬Ïà»úÎ»ÖÃµÈ
+// å…¨å±€å˜é‡ï¼šå…‰ç…§ï¼Œç›¸æœºä½ç½®ç­‰
 Vec3f light_point(0.5, 0.5, 1);
 Vec3f eye_point(0, 0, 0);
 Vec3f light_dir = light_point - eye_point;
@@ -14,14 +14,14 @@ int main(int argc, char** argv) {
 	
     Model *model = new Model("asset/african_head.obj");
     TGAImage image(weith, height, TGAImage::RGB);
-	Eigen::Matrix4f c2w_matrix = camera_matrix(camera_point, eye_point, Vec3f(0, 1, 0));
-	Eigen::Matrix4f p_matrix = perspective_matrix();
-
-	// helper.h
-	drawAfrican(model, image,light_dir, weith, height,c2w_matrix,p_matrix, camera_point);
-
-	image.flip_vertically(); 
-	image.write_tga_file("output.tga");
+    Eigen::Matrix4f c2w_matrix = camera_matrix(camera_point, eye_point, Vec3f(0, 1, 0));
+    Eigen::Matrix4f p_matrix = perspective_matrix();
+	
+    // helper.h
+    drawAfrican(model, image,light_dir, weith, height,c2w_matrix,p_matrix, camera_point);
+	
+    image.flip_vertically(); 
+    image.write_tga_file("output.tga");
     delete model;
-	return 0;
+    return 0;
 }
