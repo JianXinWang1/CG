@@ -1,0 +1,8 @@
+﻿  graphics.cpp
+D:\ComputerGeometry\dx11\dx11\graphics.cpp(67,14): warning C4838: 从“double”转换到“UCHAR”需要收缩转换
+D:\ComputerGeometry\dx11\dx11\graphics.cpp(67,14): warning C4244: “初始化”: 从“double”转换到“UCHAR”，可能丢失数据
+D:\ComputerGeometry\dx11\dx11\graphics.cpp(68,18): warning C4838: 从“double”转换到“UCHAR”需要收缩转换
+D:\ComputerGeometry\dx11\dx11\graphics.cpp(68,18): warning C4244: “初始化”: 从“double”转换到“UCHAR”，可能丢失数据
+D:\ComputerGeometry\dx11\dx11\graphics.cpp(69,21): warning C4838: 从“double”转换到“UCHAR”需要收缩转换
+D:\ComputerGeometry\dx11\dx11\graphics.cpp(69,21): warning C4244: “初始化”: 从“double”转换到“UCHAR”，可能丢失数据
+  dx11.vcxproj -> D:\ComputerGeometry\dx11\Debug\dx11.exe
