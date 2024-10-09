@@ -1,17 +1,19 @@
-struct VS_OUT
+struct VSOut
 {
-    float3 color:Color;
-    float4 pos:SV_Position;
+    float4 pos : SV_Position;
+    float2 tex : TEXCOORD;
 };
 
-cbuffer Cbuf
+struct VSIn
 {
-    float4x4 transform;
+    float3 pos : POSITION;
+    float3 tex : TEXCOORD;
 };
-VS_OUT main( float2 pos : POSITION, float3 color:Color )
+
+VSOut MyVs(VSIn vIn)
 {
-    VS_OUT vs_out;
-    vs_out.pos = mul(float4(pos.x, pos.y, 0.0f, 1.0f), transform);
-    vs_out.color = float3(color.x, color.y, color.z);
-    return vs_out;
+    VSOut vsOut;
+    vsOut.pos = float4(vIn.pos.x, vIn.pos.y, vIn.pos.z, 1.0);
+    vsOut.tex = vIn.tex;
+    return vsOut;
 }

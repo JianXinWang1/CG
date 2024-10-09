@@ -5,14 +5,7 @@
       <FullPath>D:\ComputerGeometry\CG\dx11\x64\Debug\dx11.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles>
-    <ContentFile>
-      <FullPath>D:\ComputerGeometry\CG\dx11\dx11\PixelShader.cso</FullPath>
-    </ContentFile>
-    <ContentFile>
-      <FullPath>D:\ComputerGeometry\CG\dx11\dx11\VertexShader.cso</FullPath>
-    </ContentFile>
-  </ContentFiles>
+  <ContentFiles />
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>

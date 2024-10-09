@@ -61,18 +61,18 @@ void main()
 {		
     vec3 N = normalize(WorldPos);
     
-    // 夹角近似，简化查找表
+    // 夹角近似
     vec3 R = N;
     vec3 V = R;
 
     const uint SAMPLE_COUNT = 1024u;
     vec3 prefilteredColor = vec3(0.0);
     float totalWeight = 0.0;
-    
+
     for(uint i = 0u; i < SAMPLE_COUNT; ++i)
     {
         // 随机数
-        vec2 Xi = vec2(sin(i*53.7-8.0) + 0.5, sin(i*2.3+7.8*9) + 0.5);
+        vec2 Xi = vec2(sin(i*53.7-8.0)/2.0+ 0.5, sin(i*2.3+7.8*9)/2.0 + 0.5);
         // vec2 Xi = Hammersley(i, SAMPLE_COUNT);
         vec3 H = ImportanceSampleGGX(Xi, N, roughness);
         vec3 L  = normalize(2.0 * dot(V, H) * H - V);
@@ -80,13 +80,8 @@ void main()
         float NdotL = max(dot(N, L), 0.0);
         if(NdotL > 0.0)
         {
-            float D   = DistributionGGX(N, H, roughness);
-            float NdotH = max(dot(N, H), 0.0);
-            float HdotV = max(dot(H, V), 0.0);
             const float MAX_REFLECTION_LOD = 4.0;
-     
             float mipLevel = MAX_REFLECTION_LOD * roughness; 
-            
             prefilteredColor += textureLod(environmentMap, L, mipLevel).rgb * NdotL;
             totalWeight      += NdotL;
         }

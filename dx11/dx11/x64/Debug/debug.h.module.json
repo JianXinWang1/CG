@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\debug.h.obj",
+            "outputs": [
+                "D:\\ComputerGeometry\\CG\\dx11\\dx11\\x64\\Debug\\vc143.pdb",
+                "x64\\Debug\\",
+                "D:\\ComputerGeometry\\CG\\dx11\\dx11\\x64\\Debug\\debug.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "debug.h",
+                    "source-path": "d:\\computergeometry\\cg\\dx11\\dx11\\debug.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

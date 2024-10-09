@@ -51,19 +51,17 @@ void main()
 {		
     // 自定义材质
     vec3 albedo = vec3(0.8,0.6,0.7);
-    float metallic = 0.5;
-    float roughness = 0.2;
-    float ao = texture(aoMap, TexCoords).r;
+    float metallic = 0.9;
+    float roughness = 0.1;
+    // 可以假设部分能量被吸收，不参与反射
+    vec3 F0 = vec3(0.04); 
+    F0 = mix(F0, albedo, metallic);
 
     vec3 N = getNormalFromMap();
     vec3 V = normalize(camPos - WorldPos);
 
     // 天空盒无限大则假设物体在中心，用R采样
     vec3 R = reflect(-V, N); 
-
-    // 可以假设部分能量被吸收，不参与反射
-    vec3 F0 = vec3(0.04); 
-    F0 = mix(F0, albedo, metallic);
 
     vec3 F = fresnelSchlick(max(dot(N, V), 0.0), F0);
     
@@ -72,7 +70,7 @@ void main()
     kD *= 1.0 - metallic;	  
     
     vec3 irradiance = texture(irradianceMap, N).rgb;
-    vec3 diffuse  = irradiance * albedo;
+    vec3 diffuse  = kD * irradiance * albedo;
     
     // 根据粗糙度选择level
     const float MAX_REFLECTION_LOD = 4.0;
@@ -80,12 +78,7 @@ void main()
     vec2 brdf  = texture(brdfLUT, vec2(max(dot(N, V), 0.0), roughness)).rg;
     vec3 specular = prefilteredColor * (kS * brdf.x + brdf.y);
 
-    vec3 ambient = (kD * diffuse + specular) * ao;
-    
-    vec3 color = ambient;
-
-
-    color = pow(prefilteredColor, vec3(1.0/2.2)); 
-
+    vec3 color = (diffuse + specular);
+    color = pow(color, vec3(1.0/2.2)); 
     FragColor = vec4(color , 1.0);
 }

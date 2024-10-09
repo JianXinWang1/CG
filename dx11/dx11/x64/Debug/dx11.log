@@ -1,11 +1,2 @@
-﻿  compilation object save succeeded; see D:\ComputerGeometry\CG\dx11\dx11\PixelShader.cso
-  compilation object save succeeded; see D:\ComputerGeometry\CG\dx11\dx11\VertexShader.cso
-  main.cpp
-  graphics.cpp
-  myWindow.cpp
-D:\ComputerGeometry\CG\dx11\dx11\myWindow.cpp(85,50): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-D:\ComputerGeometry\CG\dx11\dx11\myWindow.cpp(85,38): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-D:\ComputerGeometry\CG\dx11\dx11\myWindow.cpp(85,26): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-D:\ComputerGeometry\CG\dx11\dx11\graphics.cpp(108,7): warning C4267: “参数”: 从“size_t”转换到“UINT”，可能丢失数据
-D:\ComputerGeometry\CG\dx11\dx11\graphics.cpp(165,27): warning C4267: “参数”: 从“size_t”转换到“UINT”，可能丢失数据
+﻿  正在扫描源以查找模块依赖项...
   dx11.vcxproj -> D:\ComputerGeometry\CG\dx11\x64\Debug\dx11.exe

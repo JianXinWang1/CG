@@ -19,7 +19,7 @@ OpenGL实现Games202作业1,结合Shadow map与点光源,并进行滤波后处�
 
 ### IBL+PBR:
 
-OpenGL实现Games202作业2,结合辐射度量学、渲染方程、CookTorrance-BRDF、Cubemap等实现了IBL的PBR的光照.
+OpenGL实现Games202作业2,结合辐射度量学、渲染方程、CookTorrance-BRDF、Cubemap等实现了IBL的PBR的光照.[[博客]](https://zhuanlan.zhihu.com/p/720562253)
 <div align=center>
 <img src="/OpenGL/assets/IBL/res.png" width="400" height="250">
 </div>
