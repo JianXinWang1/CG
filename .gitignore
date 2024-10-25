@@ -2,3 +2,4 @@ TinyRender/.vs/
 TinyRender/TinyRender/include/Eigen/
 OpenGL/Graphics_algorithms/.vs/
 dx11/.vs
+cudaTinyRender/.vs

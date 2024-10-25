@@ -1,0 +1,339 @@
+﻿  Compiling CUDA source file cus.cu...
+  
+  D:\ComputerGeometry\CG\TinyRender\TinyRender>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\bin\nvcc.exe" -gencode=arch=compute_86,code=\"sm_86,compute_86\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64" -x cu -rdc=true  -ID:\ComputerGeometry\CG\TinyRender\TinyRender\include\tools -I"D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\include"     --keep-dir x64\Release  -maxrregcount=0  --machine 64 --compile -cudart static    -DNDEBUG -D_CONSOLE -D_UNICODE -DUNICODE -Xcompiler "/EHsc /W3 /nologo /O2 /Fdx64\Release\vc142.pdb /FS   /MD " -o x64\Release\cus.cu.obj "D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu" 
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/Default/Half.h(1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/Default/BFloat16.h(1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/GPU/PacketMath.h(1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/Default/GenericPacketMathFunctions.h(676): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1535): warning : calling a constexpr __host__ function("real") from a __host__ __device__ function("abs") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1535): warning : calling a constexpr __host__ function("imag") from a __host__ __device__ function("abs") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1535): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1535): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1540): warning : calling a constexpr __host__ function("real") from a __host__ __device__ function("abs") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1540): warning : calling a constexpr __host__ function("imag") from a __host__ __device__ function("abs") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1540): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1540): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1564): warning : calling a constexpr __host__ function("real") from a __host__ __device__ function("exp") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1565): warning : calling a constexpr __host__ function("imag") from a __host__ __device__ function("exp") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1566): warning : calling a constexpr __host__ function("imag") from a __host__ __device__ function("exp") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1564): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1565): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1566): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1567): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1572): warning : calling a constexpr __host__ function("real") from a __host__ __device__ function("exp") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1573): warning : calling a constexpr __host__ function("imag") from a __host__ __device__ function("exp") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1574): warning : calling a constexpr __host__ function("imag") from a __host__ __device__ function("exp") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1572): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1573): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1574): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(1575): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(223): warning : __host__ annotation is ignored on a function("DenseStorage") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(223): warning : __device__ annotation is ignored on a function("DenseStorage") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(233): warning : __host__ annotation is ignored on a function("operator=") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(233): warning : __device__ annotation is ignored on a function("operator=") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(248): warning : __host__ annotation is ignored on a function("DenseStorage") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(248): warning : __device__ annotation is ignored on a function("DenseStorage") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(249): warning : __host__ annotation is ignored on a function("operator=") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(249): warning : __device__ annotation is ignored on a function("operator=") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(10): warning : variable "ambient" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(11): warning : variable "ps" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(12): warning : variable "ws" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(13): warning : variable "ps_prior" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(14): warning : variable "ns" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(15): warning : variable "uvs" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(17): warning : variable "weith" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(18): warning : variable "height" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(19): warning : variable "buffer" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(20): warning : variable "camera_point" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(21): warning : variable "light_dir" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\cus.cu(22): warning : variable "model" was declared but never referenced
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(110): warning : calling a constexpr __host__ function("real") from a __host__ __device__ function("run") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "T Eigen::internal::real_impl<std::complex<T>>::run(const std::complex<T> &) [with T=float]" 
+  (1232): here
+              instantiation of "Eigen::internal::real_retval<Eigen::internal::global_math_functions_filtering_base<Scalar, void>::type>::type Eigen::numext::real(const Scalar &) [with Scalar=std::complex<float>]" 
+  D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(110): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "T Eigen::internal::real_impl<std::complex<T>>::run(const std::complex<T> &) [with T=float]" 
+  (1232): here
+              instantiation of "Eigen::internal::real_retval<Eigen::internal::global_math_functions_filtering_base<Scalar, void>::type>::type Eigen::numext::real(const Scalar &) [with Scalar=std::complex<float>]" 
+  D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(158): warning : calling a constexpr __host__ function("imag") from a __host__ __device__ function("run") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "T Eigen::internal::imag_impl<std::complex<T>>::run(const std::complex<T> &) [with T=float]" 
+  (1253): here
+              instantiation of "Eigen::internal::imag_retval<Eigen::internal::global_math_functions_filtering_base<Scalar, void>::type>::type Eigen::numext::imag(const Scalar &) [with Scalar=std::complex<float>]" 
+  D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(158): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "T Eigen::internal::imag_impl<std::complex<T>>::run(const std::complex<T> &) [with T=float]" 
+  (1253): here
+              instantiation of "Eigen::internal::imag_retval<Eigen::internal::global_math_functions_filtering_base<Scalar, void>::type>::type Eigen::numext::imag(const Scalar &) [with Scalar=std::complex<float>]" 
+  D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(234): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(58): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during instantiation of "std::complex<T> Eigen::complex_operator_detail::complex_multiply(const std::complex<T> &, const std::complex<T> &) [with T=float]" 
+  (234): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(71): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "std::complex<T> Eigen::complex_operator_detail::complex_divide_fast(const std::complex<T> &, const std::complex<T> &) [with T=float]" 
+  (96): here
+              instantiation of "std::complex<T> Eigen::complex_operator_detail::complex_divide(const std::complex<T> &, const std::complex<T> &) [with T=float]" 
+  (234): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(110): warning : calling a constexpr __host__ function("real") from a __host__ __device__ function("run") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "T Eigen::internal::real_impl<std::complex<T>>::run(const std::complex<T> &) [with T=double]" 
+  (1232): here
+              instantiation of "Eigen::internal::real_retval<Eigen::internal::global_math_functions_filtering_base<Scalar, void>::type>::type Eigen::numext::real(const Scalar &) [with Scalar=std::complex<double>]" 
+  D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(110): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "T Eigen::internal::real_impl<std::complex<T>>::run(const std::complex<T> &) [with T=double]" 
+  (1232): here
+              instantiation of "Eigen::internal::real_retval<Eigen::internal::global_math_functions_filtering_base<Scalar, void>::type>::type Eigen::numext::real(const Scalar &) [with Scalar=std::complex<double>]" 
+  D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(158): warning : calling a constexpr __host__ function("imag") from a __host__ __device__ function("run") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "T Eigen::internal::imag_impl<std::complex<T>>::run(const std::complex<T> &) [with T=double]" 
+  (1253): here
+              instantiation of "Eigen::internal::imag_retval<Eigen::internal::global_math_functions_filtering_base<Scalar, void>::type>::type Eigen::numext::imag(const Scalar &) [with Scalar=std::complex<double>]" 
+  D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/MathFunctions.h(158): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "T Eigen::internal::imag_impl<std::complex<T>>::run(const std::complex<T> &) [with T=double]" 
+  (1253): here
+              instantiation of "Eigen::internal::imag_retval<Eigen::internal::global_math_functions_filtering_base<Scalar, void>::type>::type Eigen::numext::imag(const Scalar &) [with Scalar=std::complex<double>]" 
+  D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(235): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(58): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during instantiation of "std::complex<T> Eigen::complex_operator_detail::complex_multiply(const std::complex<T> &, const std::complex<T> &) [with T=double]" 
+  (235): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/CUDA/Complex.h(71): warning : calling a constexpr __host__ function from a __host__ __device__ function is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+            detected during:
+              instantiation of "std::complex<T> Eigen::complex_operator_detail::complex_divide_fast(const std::complex<T> &, const std::complex<T> &) [with T=double]" 
+  (96): here
+              instantiation of "std::complex<T> Eigen::complex_operator_detail::complex_divide(const std::complex<T> &, const std::complex<T> &) [with T=double]" 
+  (235): here
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/Default/Half.h(1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/Default/BFloat16.h(1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/GPU/PacketMath.h(1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/arch/Default/GenericPacketMathFunctions.h(676): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(223): warning : __host__ annotation is ignored on a function("DenseStorage") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(223): warning : __device__ annotation is ignored on a function("DenseStorage") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(233): warning : __host__ annotation is ignored on a function("operator=") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(233): warning : __device__ annotation is ignored on a function("operator=") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(248): warning : __host__ annotation is ignored on a function("DenseStorage") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(248): warning : __device__ annotation is ignored on a function("DenseStorage") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(249): warning : __host__ annotation is ignored on a function("operator=") that is explicitly defaulted on its first declaration
+  
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src/Core/DenseStorage.h(249): warning : __device__ annotation is ignored on a function("operator=") that is explicitly defaulted on its first declaration
+  
+  cus.cu
+  helper.cpp
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\GenericPacketMathFunctions.h(676,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\helper.cpp(78,12): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+D:\ComputerGeometry\CG\TinyRender\TinyRender\helper.cpp(78,23): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+D:\ComputerGeometry\CG\TinyRender\TinyRender\helper.cpp(78,34): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+D:\ComputerGeometry\CG\TinyRender\TinyRender\helper.cpp(78,45): warning C4244: “初始化”: 从“t”转换到“int”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+D:\ComputerGeometry\CG\TinyRender\TinyRender\helper.cpp(163,44): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+  geometry.cpp
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,66): warning C4244: “初始化”: 从“const t”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+          and
+          [
+              t=float
+          ]
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,74): warning C4244: “初始化”: 从“const t”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+          and
+          [
+              t=float
+          ]
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\tools\geometry.cpp(10,82): warning C4244: “初始化”: 从“const t”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+          and
+          [
+              t=float
+          ]
+  model.cpp
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\tools\model.cpp(93,67): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+          and
+          [
+              t=int
+          ]
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\tools\model.cpp(93,29): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+          and
+          [
+              t=int
+          ]
+  tgaimage.cpp
+  main.cpp
+D:\ComputerGeometry\CG\TinyRender\TinyRender\main.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\include\Eigen\eigen-3.4.0\Eigen\src\Core\arch\Default\GenericPacketMathFunctions.h(676,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\ComputerGeometry\CG\TinyRender\TinyRender\main.cpp(8,35): warning C4305: “参数”: 从“double”到“t”截断
+          with
+          [
+              t=float
+          ]
+  
+  D:\ComputerGeometry\CG\TinyRender\TinyRender>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\bin\nvcc.exe" -dlink -o x64\Release\TinyRender.device-link.obj -Xcompiler "/EHsc /W3 /nologo /O2 /Fdx64\Release\vc142.pdb   /MD " -L"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\bin/crt" -L"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\lib\x64" cudnn.lib cublas.lib cublasLt.lib cudart.lib cudadevrt.lib zlibwapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  -gencode=arch=compute_86,code=sm_86  --machine 64 x64\Release\cus.cu.obj 
+  cudnn.lib
+  cublas.lib
+  cublasLt.lib
+  cudart.lib
+  cudadevrt.lib
+  zlibwapi.lib
+  kernel32.lib
+  user32.lib
+  gdi32.lib
+  winspool.lib
+  comdlg32.lib
+  advapi32.lib
+  shell32.lib
+  ole32.lib
+  oleaut32.lib
+  uuid.lib
+  odbc32.lib
+  odbccp32.lib
+  cus.cu.obj
+LINK : fatal error LNK1181: 无法打开输入文件“obj\african_head.obj”
