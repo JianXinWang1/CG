@@ -1,7 +1,7 @@
 ### Tinyrender:
-需要安装Eigen库
+开发环境：Visual studio 2022/2019, CUDA11.3，Eigen
 
-基于C++实现的软光栅化器，主要实现内容包括MVP变换、重心坐标插值、透视矫正、背面剔除、深度测试、Blinn-Phong光照模型.
+基于C++/CUDA实现的光栅化器，主要实现内容包括MVP变换、重心坐标插值、透视矫正、背面剔除、深度测试、Blinn-Phong光照模型.
 <div align=center>
 <img src="/TinyRender/model.jpg" width="400" height="400">
 </div>
