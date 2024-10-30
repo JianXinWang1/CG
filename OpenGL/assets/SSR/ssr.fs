@@ -10,11 +10,7 @@ uniform sampler2D gAlbedo;
 uniform mat4 projection;
 uniform vec3 cameraPosition;
 void main()
-{   
-    // 步进设置
-    const int step = 3999;
-    float dt = 0.02;    
-
+{      
     // 从gbuffer获取数据
     vec3 FragPos = texture(gPosition, TexCoords).rgb;
     vec3 Normal = texture(gNormal, TexCoords).rgb;
@@ -27,6 +23,10 @@ void main()
     
     // 未超出边界
     int board = 0;
+
+    // 步进设置
+    const int step = 3999;
+    float dt = 0.02; 
 
     if(check == 0.0f){
         vec3 reflectDir = normalize(reflect(camera2Pos, Normal));
