@@ -26,7 +26,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
+Camera camera(glm::vec3(2.0f, 3.0f, 5.0f));
 float lastX = (float)SCR_WIDTH / 2.0;
 float lastY = (float)SCR_HEIGHT / 2.0;
 bool firstMouse = true;
@@ -78,6 +78,7 @@ int main()
 
     Shader shaderGeometryPass("../../assets/SSR/ssr_geometry.vs", "../../assets/SSR/ssr_geometry.fs");
     Shader ssrPass("../../assets/SSR/ssr.vs", "../../assets/SSR/ssr.fs");
+    Shader hizPass("../../assets/SSR/ssr.vs", "../../assets/SSR/hiz.fs");
 
     Model backpack("../../model/ldjj/Raiden Boss_PC_Safe_v1.0.pmx");
     unsigned int water = loadTexture("../../assets/SSR/water.png");
@@ -86,7 +87,7 @@ int main()
     unsigned int gBuffer;
     glGenFramebuffers(1, &gBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, gBuffer);
-    unsigned int gPosition, gNormal, gAlbedo;
+    unsigned int gPosition, gNormal, gAlbedo, gDepth;
 
     // position
     glGenTextures(1, &gPosition);
@@ -94,9 +95,8 @@ int main()
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, gPosition, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 
     // normal
     glGenTextures(1, &gNormal);
@@ -105,6 +105,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, gNormal, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 
     // Albedo
     glGenTextures(1, &gAlbedo);
@@ -113,48 +114,70 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT2, GL_TEXTURE_2D, gAlbedo, 0);
-
-    unsigned int attachments[3] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 };
-    glDrawBuffers(3, attachments);
-
-    unsigned int rboDepth;
-    glGenRenderbuffers(1, &rboDepth);
-    glBindRenderbuffer(GL_RENDERBUFFER, rboDepth);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, SCR_WIDTH, SCR_HEIGHT);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rboDepth);
-
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    unsigned int  ssrBlurFBO;
-    glGenFramebuffers(1, &ssrBlurFBO);
-    unsigned int  ssrColorBufferBlur;
+    glBindTexture(GL_TEXTURE_2D, 0);
 
 
-
-    unsigned int flectFBO;
-    glGenFramebuffers(1, &flectFBO); 
-    glBindFramebuffer(GL_FRAMEBUFFER, flectFBO);
-    unsigned int flectBuffer;
-
-    //color buffer
-    glGenTextures(1, &flectBuffer);
-    glBindTexture(GL_TEXTURE_2D, flectBuffer);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
+    glGenTextures(1, &gDepth);
+    glBindTexture(GL_TEXTURE_2D, gDepth);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_R16F, SCR_WIDTH, SCR_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, flectBuffer, 0);
-    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-        std::cout << "SSAO Framebuffer not complete!" << std::endl;
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT3, GL_TEXTURE_2D, gDepth, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    unsigned int attachments[4] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3 };
+    glDrawBuffers(4, attachments);
+
+    // 需要深度测试的帧缓冲至少要绑定一个深度缓冲组件~
+    unsigned int rbo;
+    glGenRenderbuffers(1, &rbo);
+    glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, SCR_WIDTH, SCR_HEIGHT);
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);//绑定深度缓冲对象rbo
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+    // hiz-buffer-1
+    unsigned int hizBuffer1;
+    glGenFramebuffers(1, &hizBuffer1);
+    glBindFramebuffer(GL_FRAMEBUFFER, hizBuffer1);
 
-    // shader program
-    ssrPass.use();
-    ssrPass.setInt("gPosition", 0);
-    ssrPass.setInt("gNormal", 1);
-    ssrPass.setInt("gAlbedo", 2);
-    ssrPass.setInt("flectBuffer", 3);
+    unsigned int hizDepth1;
+    glGenTextures(1, &hizDepth1);
+    glBindTexture(GL_TEXTURE_2D, hizDepth1);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_R16F, SCR_WIDTH/2, SCR_HEIGHT/2, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT4, GL_TEXTURE_2D, hizDepth1, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    unsigned int attachmentsHiz1[1] = { GL_COLOR_ATTACHMENT4 };
+    glDrawBuffers(1, attachmentsHiz1);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+    // hiz-buffer-2
+    unsigned int hizBuffer2;
+    glGenFramebuffers(1, &hizBuffer2);
+    glBindFramebuffer(GL_FRAMEBUFFER, hizBuffer2);
+
+    unsigned int hizDepth2;
+    glGenTextures(1, &hizDepth2);
+    glBindTexture(GL_TEXTURE_2D, hizDepth2);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_R16F, SCR_WIDTH / 4, SCR_HEIGHT / 4, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT5, GL_TEXTURE_2D, hizDepth2, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    unsigned int attachmentsHiz2[1] = { GL_COLOR_ATTACHMENT5 };
+    glDrawBuffers(1, attachmentsHiz2);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    unsigned int hizBuffers[2] = { hizBuffer1 , hizBuffer2 };
+    unsigned int hizDepths[3] = {gDepth, hizDepth1 , hizDepth2 };
+
+
+ 
+    glEnable(GL_DEPTH_TEST);
     // render loop
     while (!glfwWindowShouldClose(window))
     {
@@ -169,6 +192,8 @@ int main()
 
         // 绘制gbuffer
         glBindFramebuffer(GL_FRAMEBUFFER, gBuffer);
+        glViewport(0, 0, 800, 600);
+        // shader program
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 50.0f);
         glm::mat4 view = camera.GetViewMatrix();
@@ -176,19 +201,16 @@ int main()
         shaderGeometryPass.use();
         shaderGeometryPass.setMat4("projection", projection);
         shaderGeometryPass.setMat4("view", view);
- 
         model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0, 7.0f, 0.0f));
         model = glm::scale(model, glm::vec3(7.5f, 7.5f, 7.5f));
         shaderGeometryPass.setMat4("model", model);
-
-        // 水面掩码
+        // 设置一个水面掩码
         shaderGeometryPass.setInt("invertedNormals", 1); 
-        shaderGeometryPass.setInt("water", 1);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D,water);
+        shaderGeometryPass.setInt("water", 4);
+        glActiveTexture(GL_TEXTURE4);
+        glBindTexture(GL_TEXTURE_2D, water);
         renderCube();
-
         // 模型掩码
         shaderGeometryPass.setInt("invertedNormals", 0);
         model = glm::mat4(1.0f);
@@ -198,17 +220,47 @@ int main()
         backpack.Draw(shaderGeometryPass);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        for (int i = 0; i < 2; i++) {
+            // hizBuffer
+            glBindFramebuffer(GL_FRAMEBUFFER, hizBuffers[i]);
+            int curWidth = SCR_WIDTH / (2 * (i + 1));
+            int curHeight = SCR_HEIGHT / (2 * (i + 1));
+            glViewport(0, 0, curWidth, curHeight);
+            // shader program
+            hizPass.use();
+            hizPass.setVec2("texelSize", glm::vec2(1.0f / (curWidth * 2), 1.0f / (curHeight * 2)));
+            hizPass.setInt("depthTexture", 1);
+            glActiveTexture(GL_TEXTURE1);
+            glBindTexture(GL_TEXTURE_2D, hizDepths[i]);
+            renderQuad();
+        }
+
         // 绘制到屏幕
-        glClear(GL_COLOR_BUFFER_BIT);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(0, 0, 800, 600);
         ssrPass.use();
+        glClear(GL_COLOR_BUFFER_BIT);
         ssrPass.setVec3("cameraPosition", glm::vec3(camera.GetViewMatrix() * glm::vec4(camera.Position, 1.0)));
         ssrPass.setMat4("projection", projection);
+        ssrPass.setInt("gPosition", 0);
+        ssrPass.setInt("gNormal", 1);
+        ssrPass.setInt("gAlbedo", 2);
+        ssrPass.setInt("gDepth", 3);
+        ssrPass.setInt("hizDepth1", 4);
+        ssrPass.setInt("hizDepth2", 5);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, gPosition);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, gNormal);
         glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, gAlbedo);
+        glActiveTexture(GL_TEXTURE3);
+        glBindTexture(GL_TEXTURE_2D, gDepth);
+        glActiveTexture(GL_TEXTURE4);
+        glBindTexture(GL_TEXTURE_2D, hizDepth1);
+        glActiveTexture(GL_TEXTURE5);
+        glBindTexture(GL_TEXTURE_2D, hizDepth2);
         renderQuad();
 
 
